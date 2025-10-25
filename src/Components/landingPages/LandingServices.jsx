@@ -6,54 +6,88 @@ const LandingServices = ({ page }) => {
       ? webDevelopmentServices
       : appDevelopmentServices;
   return (
-    <div id="services" className="flex justify-center relative">
-      <div className="wrapper py-10 flex flex-col items-center gap-5 z-10 text-primarytextcolor">
-        <div data-aos="fade-up" className="gradient-rounded-text-box mx-auto">
-          Our {page === "web-development" ? "Web" : "App"} Development Services
+    <div id="services" className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-[5rem] px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"></div>
+      
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div 
+            data-aos="fade-up"
+            className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 to-blue-400/20 border border-primary/30 mb-6"
+          >
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+              Our {page === "web-development" ? "Web" : "App"} Development Services
+            </span>
+          </div>
+          <h1 
+            data-aos="fade-up" 
+            data-aos-delay="100"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+          >
+            {page === "web-development" ? "Web Development" : "App Development"} <span className="bg-gradient-to-r from-blue-400 to-primary bg-clip-text text-transparent">Services</span>
+          </h1>
+          <p 
+            data-aos="fade-up" 
+            data-aos-delay="200"
+            className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+          >
+            {page === "web-development" &&
+              "High-performance web development services designed to create secure, scalable, and user-friendly websites that enhance your business's digital presence."}
+            {page === "app-development" &&
+              "High-performance app development services designed to deliver secure, scalable, and user-friendly applications that elevate your business's digital reach and engage your audience."}
+          </p>
         </div>
-        <h1 data-aos="fade-up" className="main-heading text-center max-w-4xl">
-          {/* We provide the Best IT solution services */}
-          {page === "web-development" &&
-            "High-Quality AI-Enhanced Web Development to Transform Your Online Identity"}
-          {page === "app-development" &&
-            "Cutting-Edge AI-Powered App Development Services for Intelligent Mobile Solutions"}
-        </h1>
-        <p data-aos="fade-up" className="text-center max-w-2xl desc">
-          {page === "web-development" &&
-            "High-performance web development services designed to create secure, scalable, and user-friendly websites that enhance your business's digital presence."}
-          {page === "app-development" &&
-            "High-performance app development services designed to deliver secure, scalable, and user-friendly applications that elevate your business's digital reach and engage your audience."}
-        </p>
-        <div
-          data-aos="fade-up"
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10 py-[2rem] mx-auto max-w-6xl"
-        >
-          {services.map((item) => (
+        
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((item, index) => (
             <div
               key={item.id}
-              className="shadow-2xl transition-all  bg-primary/15 hover:-translate-y-1 hover:bg-primary/25 duration-300 rounded-lg"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              className="group relative overflow-hidden transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="   group rounded-lg bg-backgro-gradient  hover:scale-105 shadow-2xl hover:shadow-primary/10 p-[1px] transition-all h-full duration-500 overflow-hidden">
-                <div className="rounded-lg bg-white hover:bg-custom-gradient p-5 flex flex-col justify-between items-start text-start h-full gap-4">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex  items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:text-white transition-colors duration-300">
-                        {/* <BiBrain  /> */}
+              {/* Card Container */}
+              <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-primary/50 rounded-2xl shadow-2xl hover:shadow-primary/20 p-8 h-full">
+                {/* Background Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon Section */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-brflex items-center justify-center from-primary/30 to-blue-400/30 transition-all duration-300">
                         <img
                           src={item?.icon}
                           alt=""
-                          className="w-10 h-10 grayscale"
+                          className="w-10 h-10 filter grayscale-0 transition-all duration-300"
                         />
                       </div>
+                      {/* Icon Glow */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-blue-400/20 opacity-100 transition-opacity duration-300 blur-sm"></div>
                     </div>
-                    <h5 className="font-semibold text-2xl font-raleway transition-colors duration-300 text-primary">
-                      {item.title}
-                    </h5>
-                    <p className="desc text-primarytextcolor">
-                      {item.description}
-                    </p>
                   </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-300 leading-relaxed text-lg">
+                    {item.description}
+                  </p>
+                  
+                  
                 </div>
+                
+                {/* Border Gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-transparent to-blue-400/20 pointer-events-none"></div>
               </div>
             </div>
           ))}
